@@ -84,7 +84,7 @@ States stateList[] = {
 
 States state;
 
-long maxLux = 20000;
+long minLux = 20000;
 
 
 
@@ -107,7 +107,7 @@ void loop(void)
 {
   long lux = sample_and_calc_lux(1000);
   Serial.println(lux);
-  if( lux < maxLux )
+  if( lux < minLux )
   {
     slowRetract(); 
   }
@@ -116,6 +116,7 @@ void loop(void)
     stateTransition();
     doActivity();
   }
+  
 }
 
 long sample_and_calc_lux(int miliseconds)
